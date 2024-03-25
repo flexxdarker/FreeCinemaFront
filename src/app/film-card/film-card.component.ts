@@ -9,12 +9,12 @@ import { FilmService } from '../services/FilmService';
 @Component({
   selector: 'app-film-list',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, MatIconModule, MatButtonModule],
   templateUrl: './film-card.component.html',
   styleUrl: './film-card.component.css'
 })
 export class ProductsListComponent implements OnInit {
-  displayedColumns: string[] = ["id", "name", "price", "rating"];
+  displayedColumns: string[] = ["id", "name", "price", "rating","imageUrl"];
   films: FilmModel[] = [];
 
   constructor(private filmService: FilmService) { }
