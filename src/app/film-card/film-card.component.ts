@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog } from '@angular/material/dialog';
 import { FilmModel } from '../services/films';
 import { FilmService } from '../services/FilmService';
 
@@ -13,7 +12,7 @@ import { FilmService } from '../services/FilmService';
   templateUrl: './film-card.component.html',
   styleUrl: './film-card.component.css'
 })
-export class ProductsListComponent implements OnInit {
+export class FilmListComponent implements OnInit {
   displayedColumns: string[] = ["id", "name", "price", "rating","imageUrl"];
   films: FilmModel[] = [];
 
