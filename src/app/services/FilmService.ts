@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FilmModel, FilmResponseModel } from './films';
+import { FilmModel } from './films';
 import { Observable } from 'rxjs';
 
 export const api = "https://localhost:7081/api/Film/all";
@@ -11,8 +11,8 @@ export const api = "https://localhost:7081/api/Film/all";
 export class FilmService {
 
   constructor(private http: HttpClient) { }
-  getAll(): Observable<FilmResponseModel> {
-    return this.http.get<FilmResponseModel>(api);
+  getAll(): Observable<FilmModel[]> {
+    return this.http.get<FilmModel[]>(api);
   }
   create(item: FilmModel): void {
     console.log("Creating product:", item);

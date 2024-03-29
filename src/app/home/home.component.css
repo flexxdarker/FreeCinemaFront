@@ -2,5 +2,20 @@ h1{
     text-align: center;
 }
 .container{
-    width: 100%;
+    display: inline;
+}
+.container span{
+    color: black;
+}
+a{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    width: auto;
+}
+a div span{
+    align-self: center;
+}
+img{
+    width: 100px;
 }
