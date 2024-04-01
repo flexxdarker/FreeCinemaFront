@@ -9,9 +9,15 @@ export interface FilmModel {
     year: number;
 }
 
-// export interface FilmResponseModel {
-//     films: FilmModel[];
-//     limit: number;
-//     skip: number;
-//     total: number;
-// }
+export interface CreateFilmModel {
+    name: string;
+    categoryId: number;
+    companyId: number;
+    year: number;
+    imageUrl: string;
+}
+
+export interface CategoryModel{
+    id:number;
+    name: string;
+}
