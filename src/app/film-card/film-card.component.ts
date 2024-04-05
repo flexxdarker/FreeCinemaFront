@@ -14,7 +14,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './film-card.component.css'
 })
 export class FilmListComponent implements OnInit {
-  displayedColumns: string[] = ["id", "name", "price", "rating","imageUrl"];
+  displayedColumns: string[] = ["id","imageUrl", "name", "category"];
   films: FilmModel[] = [];
 
   constructor(private filmService: FilmService) { }

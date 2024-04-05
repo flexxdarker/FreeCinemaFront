@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { CategoryModel, CreateFilmModel, FilmModel } from './films';
 import { Observable } from 'rxjs';
 
-export const api = "https://localhost:7081/api/Film/";
+export const api = "http://localhost:5158/api/Film/";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class FilmService {
   }
 
   getAll(): Observable<FilmModel[]> {
-    return this.http.get<FilmModel[]>(api);
+    return this.http.get<FilmModel[]>(api+"all");
   }
 
   getCategories(): Observable<CategoryModel[]>{
