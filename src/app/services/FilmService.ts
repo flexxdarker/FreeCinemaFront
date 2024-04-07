@@ -17,7 +17,7 @@ export class FilmService {
   }
 
   getAll(): Observable<FilmModel[]> {
-    return this.http.get<FilmModel[]>(api+"all");
+    return this.http.get<FilmModel[]>(api + "all");
   }
 
   getCategories(): Observable<CategoryModel[]>{
