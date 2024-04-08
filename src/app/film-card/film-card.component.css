@@ -2,6 +2,7 @@
     height: 60px;
     width: 120px;
     transition: 0.2s;
+    background-color: transparent;
 }
 
 .item-image img {
@@ -15,4 +16,6 @@
 
 .item-image:hover {
     transform: scale(2);
+    color: transparent;
+    max-height: 100px;
 }

@@ -14,31 +14,32 @@
         <mat-form-field>
             <mat-label>Company</mat-label>
             <mat-select formControlName="categoryId" required>
-                <mat-option value="1">Universal Pictures</mat-option>
-                <mat-option value="2">Paramount Pictures</mat-option>
-                <mat-option value="3">Warner Bros</mat-option>
-                <mat-option value="4">Columbia Pictures</mat-option>
-                <mat-option value="4">Twentieth Century Studios</mat-option>
+                @for (i of companies; track i.id) {
+                    <mat-option [value]="i.id">
+                        {{i.name}}
+                    </mat-option>
+                }
             </mat-select>
         </mat-form-field>
         <mat-form-field floatLabel="always" style="flex-basis: 35%;">
             <mat-label>Year</mat-label>
-            <input formControlName="Year" matInput type="date" placeholder="0">
+            <input formControlName="year" matInput type="date" placeholder="0">
         </mat-form-field>
     </div>
 
     <mat-form-field>
         <mat-label>Category</mat-label>
         <mat-select formControlName="categoryId" required>
-            <mat-option value="1">Action</mat-option>
-            <mat-option value="2">Horror</mat-option>
-            <mat-option value="3">Comedy</mat-option>
-            <mat-option value="4">Fantasy</mat-option>
+            @for (i of categories; track i.id) {
+                <mat-option [value]="i.id">
+                    {{i.name}}
+                </mat-option>
+                }
         </mat-select>
     </mat-form-field>
     <mat-form-field>
         <mat-label>ImageUrl</mat-label>
-        <input formControlName="ImageUrl" matInput placeholder="Enter film ImageUrl">
+        <input formControlName="imageUrl" matInput placeholder="Enter film ImageUrl">
     </mat-form-field>
     <div class="buttons-block">
         <button type="reset" mat-raised-button>Cancel</button>

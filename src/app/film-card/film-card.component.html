@@ -1,5 +1,5 @@
 <h2>Films</h2>
-<button mat-fab color="basic" routerLink="/add">
+<button mat-fab color="basic" routerLink="/add-film">
     <mat-icon>add-circle</mat-icon>
 </button>
 <table mat-table [dataSource]="films" class="mat-elevation-z8">
@@ -21,6 +21,11 @@
     <ng-container matColumnDef="year">
         <th mat-header-cell *matHeaderCellDef> Year </th>
         <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="categoryName">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.categoryName}} </td>
     </ng-container>
 
     <ng-container matColumnDef="actions">

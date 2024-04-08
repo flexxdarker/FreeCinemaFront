@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CategoryModel, CreateFilmModel, FilmModel } from './films';
+import { CategoryModel, CompanyModel, CreateFilmModel, FilmModel } from './films';
 import { Observable } from 'rxjs';
 
 export const api = "http://localhost:5158/api/Film/";
@@ -23,8 +23,12 @@ export class FilmService {
   getCategories(): Observable<CategoryModel[]>{
     return this.http.get<CategoryModel[]>(api + "categories");
   }
-  
-  create(item: FilmModel): Observable<any> {
+
+  getCompanies(): Observable<CompanyModel[]>{
+    return this.http.get<CompanyModel[]>(api + "companies");
+  }
+
+  create(item: CreateFilmModel): Observable<any> {
     const formData = new FormData();
 
     for (const key in item) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FilmModel } from '../services/films';
+import { CategoryModel, CompanyModel, CreateFilmModel, FilmModel } from '../services/films';
 import { FilmService } from '../services/FilmService';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -35,18 +35,33 @@ export class AddFilmComponent {
     imageUrl: ['']
   });
 
+  @Input() product: FilmModel | null = null;
+  categories: CategoryModel[] = [];
+  companies: CompanyModel[] = [];
   constructor(private fb: FormBuilder,
     private service: FilmService,
     private location: Location) { }
 
-  onSubmit(): void {
-    if (!this.form.valid) return;
+    ngOnInit(): void {
+      this.service.getCategories().subscribe(res => this.categories = res);
+      this.service.getCompanies().subscribe(res => this.categories = res);
+    }
 
-    const item = this.form.value as FilmModel;
-    this.service.create(item);
-  }
+    onSubmit(): void {
+      if (!this.form.valid) {
+        alert("Invalid data, please try again!");
+        return;
+      }
 
-  back(): void {
-    this.location.back();
-  }
+    const item: CreateFilmModel = this.form.value as CreateFilmModel;
+       this.service.create(item).subscribe(res => {
+         console.log(res);
+
+        this.back();
+      });
+    }
+
+    back(): void {
+      this.location.back();
+    }
 }

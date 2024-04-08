@@ -5,18 +5,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { FilmModel } from '../services/films';
 import { MatDialog } from '@angular/material/dialog';
 import { FilmService } from '../services/FilmService';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
+
 
 @Component({
   selector: 'app-film-list',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, MatButtonModule],
+  imports: [MatTableModule, MatIconModule, MatButtonModule, RouterLink],
   templateUrl: './film-card.component.html',
   styleUrl: './film-card.component.css'
 })
 export class FilmListComponent implements OnInit {
-  displayedColumns: string[] = ["imageUrl", "id", "name"];
+  displayedColumns: string[] = ["imageUrl", "id", "name", "categoryName"];
   films: FilmModel[] = [];
   tableSource = new MatTableDataSource<FilmModel>([]);
 

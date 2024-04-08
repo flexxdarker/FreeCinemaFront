@@ -7,6 +7,6 @@ import { EditFilmComponent } from './edit-film/edit-film.component';
 export const routes: Routes = [
     { path: "", component: HomeComponent },
     { path: "films", component: FilmListComponent },
-    { path: "add", component: AddFilmComponent },
-    { path: "edit/:id", component: EditFilmComponent}
+    { path: "add-film", component: AddFilmComponent },
+    { path: "edit-film/:id", component: EditFilmComponent}
 ];
