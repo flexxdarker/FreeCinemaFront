@@ -24,6 +24,5 @@ export interface CategoryModel{
 export interface CompanyModel{
     id: number;
     name: string;
-    description: string;
     date: Date;
 }

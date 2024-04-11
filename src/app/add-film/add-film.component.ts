@@ -5,7 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CategoryModel, CompanyModel, CreateFilmModel, FilmModel } from '../services/films';
 import { FilmService } from '../services/FilmService';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,25 +26,24 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './add-film.component.css'
 })
 export class AddFilmComponent {
-  form = this.fb.group({
-    name: [''],
-    description: [''],
-    categoryId: [0],
-    companyId: [0],
-    year: [0],
-    imageUrl: ['']
-  });
-
   @Input() product: FilmModel | null = null;
+  form: FormGroup;
   categories: CategoryModel[] = [];
   companies: CompanyModel[] = [];
   constructor(private fb: FormBuilder,
     private service: FilmService,
-    private location: Location) { }
+    private location: Location) { 
+      this.form = this.fb.group({
+      name: ['', Validators.required],
+      categoryId: [0, [Validators.required, Validators.minLength(1)]],
+      companyId: [0, [Validators.required, Validators.minLength(1)]],
+      year: [0, [Validators.required, Validators.maxLength(Date.now())]],
+      imageUrl: ['', [Validators.required]]
+    });}
 
     ngOnInit(): void {
+      this.service.getCompanies().subscribe(res => this.companies = res);
       this.service.getCategories().subscribe(res => this.categories = res);
-      this.service.getCompanies().subscribe(res => this.categories = res);
     }
 
     onSubmit(): void {

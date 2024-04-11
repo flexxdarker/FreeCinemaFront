@@ -17,7 +17,7 @@ import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog
   styleUrl: './film-card.component.css'
 })
 export class FilmListComponent implements OnInit {
-  displayedColumns: string[] = ["imageUrl", "id", "name", "categoryName"];
+  displayedColumns: string[] = ["imageUrl", "id", "name", "categoryName", "actions"];
   films: FilmModel[] = [];
   tableSource = new MatTableDataSource<FilmModel>([]);
 
@@ -32,7 +32,7 @@ export class FilmListComponent implements OnInit {
 
   onEdit(id: number): void {
     // open edit page
-    this.router.navigate(["/edit", id]);
+    this.router.navigate(["/edit-film", id]);
   }
 
   onDelete(id: number): void {

@@ -2,34 +2,32 @@
     <button (click)="back()" mat-icon-button>
         <mat-icon>arrow_back</mat-icon>
     </button>
-    <span>Create New Product</span>
+    <span>Add new Film</span>
 </h1>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field>
         <mat-label>Name</mat-label>
         <input formControlName="name" required matInput placeholder="Enter film name">
     </mat-form-field>
+    <mat-form-field>
+        <mat-label>Company</mat-label>
+        <mat-select formControlName="companyId" required placeholder="Pick company from list">
+            @for (i of companies; track i.id) {
+                <mat-option [value]="i.id">
+                    {{i.name}}
+                </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field floatLabel="always">
+        <mat-label>Year</mat-label>
+        <input formControlName="year" matInput type="number" placeholder="0" required="" placeholder="Enter year of film">
+    </mat-form-field>
 
-    <div class="col-2">
-        <mat-form-field>
-            <mat-label>Company</mat-label>
-            <mat-select formControlName="categoryId" required>
-                @for (i of companies; track i.id) {
-                    <mat-option [value]="i.id">
-                        {{i.name}}
-                    </mat-option>
-                }
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field floatLabel="always" style="flex-basis: 35%;">
-            <mat-label>Year</mat-label>
-            <input formControlName="year" matInput type="date" placeholder="0">
-        </mat-form-field>
-    </div>
 
     <mat-form-field>
         <mat-label>Category</mat-label>
-        <mat-select formControlName="categoryId" required>
+        <mat-select formControlName="categoryId" required placeholder="Pick category from list">
             @for (i of categories; track i.id) {
                 <mat-option [value]="i.id">
                     {{i.name}}
